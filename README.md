@@ -127,13 +127,19 @@ The Edit page is similar, but with the information pre-filled from the database 
 </details>
 
 ### BlogAuthor Part 2- Details and Delete Page Styling
-The purpose of this ticket was to add styling to the Blog Author Details page, remove the delete page, and move the delete action onto a button in the Detailss page. The final product looked like this:
+The purpose of this ticket was to add styling to the Blog Author Details page, remove the delete page, and move the delete action onto a button in the Details page. The final product looked like this:
 
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220517989-89c3d67d-bd01-4ca3-b460-49e977d0a54f.png"/>
 
 The "Author Pages" and "Blog Posts" buttons are part of a navbar that toggle between the information page for the author and a dummy page that will eventually implement a list of blog posts. Rather than write any JS for this functionality, I used built-in bootstrap classes made for this purpose. No reason to re-invent the wheel!
 
+The "data-toggle" and "href" attributes work together to select the correct information to display via the id further down the page.
 
+<img width = "415" alt="image" src="https://github.com/rajhah/Tech-Academy-Projects/blob/main/navbar.png"/>
+
+The social media buttons on this page are dummy links until actual author information is connected.
+
+The Delete button will delete the currentt author and redirect the user to the Index page.
 
 ### BlogAuthor Part 3- Index Page Styling --------15972
 ### BlogAuthor Part 4- Async Delete --------15980
