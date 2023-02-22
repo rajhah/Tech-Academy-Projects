@@ -131,6 +131,9 @@ The purpose of this ticket was to add styling to the Blog Author Details page, r
 
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220517989-89c3d67d-bd01-4ca3-b460-49e977d0a54f.png"/>
 
+The "Author Pages" and "Blog Posts" buttons are part of a navbar that toggle between the information page for the author and a dummy page that will eventually implement a list of blog posts. Rather than write any JS for this functionality, I used built-in bootstrap classes made for this purpose. No reason to re-invent the wheel!
+
+
 
 ### BlogAuthor Part 3- Index Page Styling --------15972
 ### BlogAuthor Part 4- Async Delete --------15980
