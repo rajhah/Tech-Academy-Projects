@@ -12,7 +12,7 @@ Most of my code was written in C#, but it also included some javascript and css.
 + [Count Developers on Project page](#count-developers-on-project-page)
 + [Create BlogAuthor Table](#create-blogauthor-table)
 + [BlogAuthor Part 1- Create and Edit Page Styling](#blogauthor-part-1--create-and-edit-page-styling)
-+ [BlogAuthor Part 2- Details and Delete Page Styling --------15955](#blogauthor-part-2--details-and-delete-page-styling---------15955)
++ [BlogAuthor Part 2- Details and Delete Page Styling](#blogauthor-part-2--details-and-delete-page-styling)
 + [BlogAuthor Part 3- Index Page Styling --------15972](#blogauthor-part-3--index-page-styling---------15972)
 + [BlogAuthor Part 4- Async Delete --------15980](#blogauthor-part-4--async-delete---------15980)
 + [HeadAuthor Part 1- Create User --------15981](#headauthor-part-1--create-user---------15981)
@@ -63,6 +63,7 @@ Here is what the completed Create page looks like, or at least, the section that
 
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220484109-1e4a7ea1-ce79-4979-a254-43c4ae20b04c.png">
 
+The Edit page is similar, but with the information pre-filled from the database for whichever user is selected.
 
 <details>
   <summary>Create Page cshtml</summary>
@@ -125,7 +126,11 @@ Here is what the completed Create page looks like, or at least, the section that
 
 </details>
 
-### BlogAuthor Part 2- Details and Delete Page Styling --------15955
+### BlogAuthor Part 2- Details and Delete Page Styling
+The purpose of this ticket was to add styling to the Blog Author Details page, remove the delete page, and move the delete action onto a button in the Detailss page. The final product looked like this:
+
+
+
 ### BlogAuthor Part 3- Index Page Styling --------15972
 ### BlogAuthor Part 4- Async Delete --------15980
 ### HeadAuthor Part 1- Create User --------15981
