@@ -9,6 +9,18 @@ We used .NET Framework 4.7.2 for this project
 
 Most of my code was written in C#, but it also included some javascript and css.
 
++ [Count Developers on Project page](#count-developers-on-project-page)
++ [Create BlogAuthor Table](#create-blogauthor-table)
++ [BlogAuthor Part 1- Create and Edit Page Styling](#blogauthor-part-1--create-and-edit-page-styling)
++ [BlogAuthor Part 2- Details and Delete Page Styling --------15955](#blogauthor-part-2--details-and-delete-page-styling---------15955)
++ [BlogAuthor Part 3- Index Page Styling --------15972](#blogauthor-part-3--index-page-styling---------15972)
++ [BlogAuthor Part 4- Async Delete --------15980](#blogauthor-part-4--async-delete---------15980)
++ [HeadAuthor Part 1- Create User --------15981](#headauthor-part-1--create-user---------15981)
++ [HeadAuthor Part 2- Seed HeadAuthor user in database --------15982](#headauthor-part-2--seed-headauthor-user-in-database---------15982)
++ [HeadAuthor Part 3- Restrict CRUD operations --------16017](#headauthor-part-3--restrict-crud-operations---------16017)
++ [HeadAuthor Easy Login Button --------16018](#headauthor-easy-login-button---------16018)
++ [Link BlogAuthor and BlogPost --------16030](#link-blogauthor-and-blogpost---------16030)
+
 ### Count Developers on Project page
 This ticket was a "get your feet wet" story ticket that involved counting the number of developers in a list and displaying that number at the top of the page. I used javascript for this. Each developer was assigned to create their own paragraph using a new \<p\> tag, so this code counts all such tags on the page and changes the value of a bootstrap badge with the id "\#NumPersons" to display the number when the page loads.
 
@@ -29,7 +41,7 @@ I also added a DbSet to our application's DbContext class:
 
 Creating this model and updating the database automatically scaffolded the necessary pages on the web app for CRUD operations on the table. The next few tickets were concerned with styling these pages and limiting access to certain functions according to a user's priviliges on the website.
 
-### BlogAuthor Part 1: Create and Edit Page Styling
+### BlogAuthor Part 1- Create and Edit Page Styling
 This was the first ticket that represented a significant work effort. The requirements were to style the Create and Edit pages that had been generated automatically to match the look and function of a designed prototype.
 
 Notably, the "Bio" entry was required to be formatted as a TextArea, and the "Joined" and "Left" entries had to be changed to date pickers, rather than simple input fields.
@@ -113,11 +125,11 @@ Here is what the completed Create page looks like, or at least, the section that
 
 </details>
 
-### BlogAuthor Part 2: Details/Delete Page Styling --------15955
-### BlogAuthor Part 3: Index Page Styling --------15972
-### BlogAuthor Part 4: Async Delete --------15980
-### HeadAuthor Part 1: Create User --------15981
-### HeadAuthor Part 2: Seed HeadAuthor user in database --------15982
-### HeadAuthor Part 3: Restrict CRUD operations --------16017
+### BlogAuthor Part 2- Details and Delete Page Styling --------15955
+### BlogAuthor Part 3- Index Page Styling --------15972
+### BlogAuthor Part 4- Async Delete --------15980
+### HeadAuthor Part 1- Create User --------15981
+### HeadAuthor Part 2- Seed HeadAuthor user in database --------15982
+### HeadAuthor Part 3- Restrict CRUD operations --------16017
 ### HeadAuthor Easy Login Button --------16018
 ### Link BlogAuthor and BlogPost --------16030
