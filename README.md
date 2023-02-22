@@ -129,6 +129,7 @@ The Edit page is similar, but with the information pre-filled from the database 
 ### BlogAuthor Part 2- Details and Delete Page Styling
 The purpose of this ticket was to add styling to the Blog Author Details page, remove the delete page, and move the delete action onto a button in the Detailss page. The final product looked like this:
 
+<img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220517989-89c3d67d-bd01-4ca3-b460-49e977d0a54f.png"/>
 
 
 ### BlogAuthor Part 3- Index Page Styling --------15972
