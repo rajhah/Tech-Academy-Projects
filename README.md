@@ -13,8 +13,8 @@ Most of my code was written in C#, but it also included some javascript and css.
 + [Create BlogAuthor Table](#create-blogauthor-table)
 + [BlogAuthor Part 1- Create and Edit Page Styling](#blogauthor-part-1--create-and-edit-page-styling)
 + [BlogAuthor Part 2- Details and Delete Page Styling](#blogauthor-part-2--details-and-delete-page-styling)
-+ [BlogAuthor Part 3- Index Page Styling --------15972](#blogauthor-part-3--index-page-styling---------15972)
-+ [BlogAuthor Part 4- Async Delete --------15980](#blogauthor-part-4--async-delete---------15980)
++ [BlogAuthor Part 3- Index Page Styling](#blogauthor-part-3--index-page-styling)
++ [BlogAuthor Part 4- Async Delete](#blogauthor-part-4--async-delete)
 + [HeadAuthor Part 1- Create User --------15981](#headauthor-part-1--create-user---------15981)
 + [HeadAuthor Part 2- Seed HeadAuthor user in database --------15982](#headauthor-part-2--seed-headauthor-user-in-database---------15982)
 + [HeadAuthor Part 3- Restrict CRUD operations --------16017](#headauthor-part-3--restrict-crud-operations---------16017)
@@ -131,7 +131,7 @@ The purpose of this ticket was to add styling to the Blog Author Details page, r
 
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220517989-89c3d67d-bd01-4ca3-b460-49e977d0a54f.png"/>
 
-The "Author Pages" and "Blog Posts" buttons are part of a navbar that toggle between the information page for the author and a dummy page that will eventually implement a list of blog posts. Rather than write any JS for this functionality, I used built-in bootstrap classes made for this purpose. No reason to re-invent the wheel!
+The "Author Pages" and "Blog Posts" buttons are part of a navbar that toggle between the information page for the author and a dummy page that will eventually implement a list of blog posts. Rather than writing any JS for this, I used built-in bootstrap classes made for this purpose. No reason to re-invent the wheel!
 
 The "data-toggle" and "href" attributes work together to select the correct information to display via the id further down the page.
 
@@ -139,10 +139,116 @@ The "data-toggle" and "href" attributes work together to select the correct info
 
 The social media buttons on this page are dummy links until actual author information is connected.
 
-The Delete button will delete the currentt author and redirect the user to the Index page.
+The Delete button will delete the current author and redirect the user to the Index page.
 
-### BlogAuthor Part 3- Index Page Styling --------15972
-### BlogAuthor Part 4- Async Delete --------15980
+### BlogAuthor Part 3- Index Page Styling
+For this ticket I created a partial view based on the previous ticket for the details page. This partial view rendered an author details card for each entry in the model. All the content on the index page was simply replaced by this partial view. A few stylistic changes were made as well.
+
+### BlogAuthor Part 4- Async Delete
+This ticket was for creating an asyncronous method to delete author records. There were several steps required for this:
+* Front end modal and functionality
+* Ajax call triggered by delete button click
+* New Async method in the controller
+
+I handled the front end, again, mostly with built-in bootstrap classes, Unsurprisingly, this turned out to be the easy part:
+
+<img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/221034388-0cb39c5c-73b3-4963-95ba-799a739c864e.png" />
+
+<details>
+  <Summary>Modal Code</Summary>
+     
+      <div class="modal fade" id="deleteModal-@item.BlogAuthorId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content cms-bg-light cms-text-dark">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Confirm Delete?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      Are you sure you want to delete author @item.Name?
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                      @*When delete button is clicked, call an async method to delete THIS BlogAuthor*@
+                      <form>
+                          @Html.AntiForgeryToken()
+                          <input type="hidden" id="BlogAuthorId" value="@item.BlogAuthorId" />
+                          <button type="button" class="BlogAuthor-Index--DeleteAsync btn cms-bg-main cms-text-light" data-dismiss="modal">Delete</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+</details>
+
+In the js file I created an ajax call to the new controller method that triggered when the button was clicked. Using the .closest("form") tag ensured that the correct id was sent through to be deleted. If a successful response is returned from the method, the rest of the code animated the deletion of the actual html element so that it looked pleasing to the user.
+
+<details>
+  <summary>js Code</summary>
+
+    $(".BlogAuthor-Index--DeleteAsync").click(function () {
+      var form = $(this).closest("form");
+      var authorId = form.find("#BlogAuthorId").val();
+      var token = form.find("input[name='__RequestVerificationToken']").val();
+      $.ajax({
+          type: "POST",
+          url: "/Blog/BlogAuthors/AsyncDelete",
+          data: {
+              id: authorId,
+              __RequestVerificationToken: token
+          },
+          success: function (data) {
+              if (data.status == "success") {
+                  //Item was successfully deleted
+
+                  //Animation:
+                  /*
+                   *Using jQuery, animate the opacity of the card to 0 over 1 second
+                   *Then use the callback function to squash the height so everything else slides up
+                   *Finally, use the nested callback to hide the element completely when the animation is done
+                   */
+                  $("#BlogAuthorCard-" + authorId).animate({ opacity: 0 }, 1000,
+                      function () {
+                          $(this).animate({ height: 0 }, 165,
+                              function () {
+                                  $(this).hide();
+                              });
+                      });
+              } else {
+                  //Send an error message if author id not found in db
+                  alert("Error: Author does not exist.")
+              }
+          },
+          error: function () {
+              alert("Error: Author could not be deleted.")
+          }
+      });
+    });
+</details>
+
+<details>
+  <summary>Controller Code</summary>
+  
+        // POST: Blog/BlogAuthors/AsyncDelete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AsyncDelete(int id)
+        {
+            BlogAuthor blogAuthor = await db.BlogAuthors.FindAsync(id);
+            if(blogAuthor != null)
+            {
+                db.BlogAuthors.Remove(blogAuthor);
+                await db.SaveChangesAsync();
+                return Json(new { status="success", authorId = id });
+            }
+            return Json(new { status = "error" });
+        }
+  
+</details>
+
+
 ### HeadAuthor Part 1- Create User --------15981
 ### HeadAuthor Part 2- Seed HeadAuthor user in database --------15982
 ### HeadAuthor Part 3- Restrict CRUD operations --------16017
