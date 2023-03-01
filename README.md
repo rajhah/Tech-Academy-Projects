@@ -280,6 +280,11 @@ In the js file I created an ajax call to the new controller method that triggere
 <hr>
 
 ### HeadAuthor Part 1- Create User --------15981
+  This is another very straightforward ticket - it involved creating a Head Author user with a few properties that would be used later. The next few tickets will outline some of its functionality.
+  
+  <details><summary>Code</summary>
+    
+  </details>
 
 <hr>
 
