@@ -21,25 +21,36 @@ Most of my code was written in C#, but it also included some javascript and css.
 + [HeadAuthor Easy Login Button --------16018](#headauthor-easy-login-button---------16018)
 + [Link BlogAuthor and BlogPost --------16030](#link-blogauthor-and-blogpost---------16030)
 
+<hr>
+
 ### Count Developers on Project page
 This ticket was a "get your feet wet" story ticket that involved counting the number of developers in a list and displaying that number at the top of the page. I used javascript for this. Each developer was assigned to create their own paragraph using a new \<p\> tag, so this code counts all such tags on the page and changes the value of a bootstrap badge with the id "\#NumPersons" to display the number when the page loads.
 
-Here you can see the complete code for this story:
+<details><summary>Here you can see the complete code for this story:</summary>
 
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220472145-8180c82f-00c4-46e2-ad65-75215ac09b62.png">
+</details>
+  
+<hr>
 
 ### Create BlogAuthor Table
 For this story ticket I was tasked with creating a new table to hold information about different blog authors on the website. To do this I created a new model class for the database table, because the solution was using a code-first model.
 
-Here is the class model I created:
+<details>
+  <summary>Here is the class model I created:</summary>
 
 <img width="415" alt="image" src="https://user-images.githubusercontent.com/109645238/220474209-1d829e0b-a923-4bfd-b29a-f35c54559277.png">
-
-I also added a DbSet to our application's DbContext class:
+</details>
+  
+<details>
+  <summary>I also added a DbSet to our application's DbContext class:</summary>
 
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220474752-e9376e4c-75f0-44d6-a33f-9ed1d8bdd684.png">
-
+</details>
+  
 Creating this model and updating the database automatically scaffolded the necessary pages on the web app for CRUD operations on the table. The next few tickets were concerned with styling these pages and limiting access to certain functions according to a user's priviliges on the website.
+
+<hr>
 
 ### BlogAuthor Part 1- Create and Edit Page Styling
 This was the first ticket that represented a significant work effort. The requirements were to style the Create and Edit pages that had been generated automatically to match the look and function of a designed prototype.
@@ -48,10 +59,13 @@ Notably, the "Bio" entry was required to be formatted as a TextArea, and the "Jo
 
 .NET automatically interpretes the data annotation "[DataType(DataType.MultilineText)]" as a textarea when rendering the view, so in order to do that I simply added this annotation in the BlogAuthor model class, as well as a little css to display it more clearly to the user.
 
+<details><summary>Images</summary>
+  
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220477439-04c5b12d-34ed-41d9-9d89-ca3589df8209.png">
-
+</br>
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220484624-20eaa9aa-8b2e-439f-9f22-dcc70f51c40f.png">
-
+  
+</details>
 
 In order to set the Joined and Left fields to be date pickers, I set the type to datetime-local. You can see this in the included code below. I'm providing the full code this time to give a sense of the whole page. Subsequent pages will not be included, but I feel it was necessary to explain a few things. 
 
@@ -59,9 +73,11 @@ First, most of the classes inside the html tags are either bootstrap classes or 
 
 Second, you can clearly see the layout of the form created by .NET when the page was scaffolded. In this example I made only a few small changes to the stylings of the buttons - the action methods remained unchanged. In future tickets, you will see some examples that needed to be modified to work correctly.
 
-Here is what the completed Create page looks like, or at least, the section that I worked on:
+<details><summary>Here is what the completed Create page looks like, or at least, the section that I worked on:</summary>
 
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220484109-1e4a7ea1-ce79-4979-a254-43c4ae20b04c.png">
+
+</details>
 
 The Edit page is similar, but with the information pre-filled from the database for whichever user is selected.
 
@@ -126,23 +142,35 @@ The Edit page is similar, but with the information pre-filled from the database 
 
 </details>
 
+<hr>
+
 ### BlogAuthor Part 2- Details and Delete Page Styling
-The purpose of this ticket was to add styling to the Blog Author Details page, remove the delete page, and move the delete action onto a button in the Details page. The final product looked like this:
+The purpose of this ticket was to add styling to the Blog Author Details page, remove the delete page, and move the delete action onto a button in the Details page. 
+
+<details><summary>The final product looked like this:</summary>
 
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/220517989-89c3d67d-bd01-4ca3-b460-49e977d0a54f.png"/>
+  
+</details>
 
 The "Author Pages" and "Blog Posts" buttons are part of a navbar that toggle between the information page for the author and a dummy page that will eventually implement a list of blog posts. Rather than writing any JS for this, I used built-in bootstrap classes made for this purpose. No reason to re-invent the wheel!
 
 The "data-toggle" and "href" attributes work together to select the correct information to display via the id further down the page.
 
+<details><summary>Code</summary>
 <img width = "415" alt="image" src="https://github.com/rajhah/Tech-Academy-Projects/blob/main/navbar.png"/>
-
+</details>
+  
 The social media buttons on this page are dummy links until actual author information is connected.
 
 The Delete button will delete the current author and redirect the user to the Index page.
 
+<hr>
+
 ### BlogAuthor Part 3- Index Page Styling
 For this ticket I created a partial view based on the previous ticket for the details page. This partial view rendered an author details card for each entry in the model. All the content on the index page was simply replaced by this partial view. A few stylistic changes were made as well.
+
+<hr>
 
 ### BlogAuthor Part 4- Async Delete
 This ticket was for creating an asyncronous method to delete author records. There were several steps required for this:
@@ -150,9 +178,10 @@ This ticket was for creating an asyncronous method to delete author records. The
 * Ajax call triggered by delete button click
 * New Async method in the controller
 
-I handled the front end, again, mostly with built-in bootstrap classes, Unsurprisingly, this turned out to be the easy part:
+<details><summary>I handled the front end, again, mostly with built-in bootstrap classes, Unsurprisingly, this turned out to be the easy part:</summary>
 
 <img width = "415" alt="image" src="https://user-images.githubusercontent.com/109645238/221034388-0cb39c5c-73b3-4963-95ba-799a739c864e.png" />
+</details>
 
 <details>
   <Summary>Modal Code</Summary>
@@ -248,9 +277,22 @@ In the js file I created an ajax call to the new controller method that triggere
   
 </details>
 
+<hr>
 
 ### HeadAuthor Part 1- Create User --------15981
+
+<hr>
+
 ### HeadAuthor Part 2- Seed HeadAuthor user in database --------15982
+  
+<hr>
+
 ### HeadAuthor Part 3- Restrict CRUD operations --------16017
+  
+<hr>
+
 ### HeadAuthor Easy Login Button --------16018
+  
+<hr>
+
 ### Link BlogAuthor and BlogPost --------16030
