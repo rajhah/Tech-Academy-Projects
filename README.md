@@ -283,7 +283,7 @@ In the js file I created an ajax call to the new controller method that triggere
   This is another very straightforward ticket - it involved creating a Head Author user with a few properties that would be used later. The next few tickets will outline some of its functionality.
   
   <details><summary>Code</summary>
-    
+    <img width = "415" alt="image" src="https://raw.githubusercontent.com/rajhah/Tech-Academy-Projects/main/headauthor%20ss.png" />
   </details>
 
 <hr>
