@@ -1,10 +1,10 @@
 # Tech-Academy-Projects
 This repository was initially to be used for Tech Academy Projects.
 Eventually all the projects ended up in other repos, which you can find here:
-[C# Projects](https://github.com/rajhah/Tech-Academy-C-Sharp-Projects)
-[JavaScript Projects](https://github.com/rajhah/JavaScript-Projects-TA)
-[HTML and CSS projects](https://github.com/rajhah/HTML-and-CSS-projects-TA)
-[Python (introuduction to version control)](https://github.com/rajhah/office_hours_python)
++ [C# Projects](https://github.com/rajhah/Tech-Academy-C-Sharp-Projects)
++ [JavaScript Projects](https://github.com/rajhah/JavaScript-Projects-TA)
++ [HTML and CSS projects](https://github.com/rajhah/HTML-and-CSS-projects-TA)
++ [Python (introuduction to version control)](https://github.com/rajhah/office_hours_python)
 
 ## Tech Academy Live Project
 The Live Project took place from Jan 23rd to Feb 3rd, 2023. It was a two week project designed to simulate a typical development sprint with daily standups and weekly retrospective meeetings. The project was ongoing work on a web application. Below is a list of the tickets I worked on during this time, along with descriptions and code snippets as appropriate.
