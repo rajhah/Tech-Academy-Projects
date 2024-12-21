@@ -15,11 +15,6 @@ Most of my code was written in C#, but it also included some javascript and css.
 + [BlogAuthor Part 2- Details and Delete Page Styling](#blogauthor-part-2--details-and-delete-page-styling)
 + [BlogAuthor Part 3- Index Page Styling](#blogauthor-part-3--index-page-styling)
 + [BlogAuthor Part 4- Async Delete](#blogauthor-part-4--async-delete)
-+ [HeadAuthor Part 1- Create User --------15981](#headauthor-part-1--create-user---------15981)
-+ [HeadAuthor Part 2- Seed HeadAuthor user in database --------15982](#headauthor-part-2--seed-headauthor-user-in-database---------15982)
-+ [HeadAuthor Part 3- Restrict CRUD operations --------16017](#headauthor-part-3--restrict-crud-operations---------16017)
-+ [HeadAuthor Easy Login Button --------16018](#headauthor-easy-login-button---------16018)
-+ [Link BlogAuthor and BlogPost --------16030](#link-blogauthor-and-blogpost---------16030)
 
 <hr>
 
@@ -278,26 +273,3 @@ In the js file I created an ajax call to the new controller method that triggere
 </details>
 
 <hr>
-
-### HeadAuthor Part 1- Create User --------15981
-  This is another very straightforward ticket - it involved creating a Head Author user with a few properties that would be used later. The next few tickets will outline some of its functionality.
-  
-  <details><summary>Code</summary>
-    <img width = "415" alt="image" src="https://raw.githubusercontent.com/rajhah/Tech-Academy-Projects/main/headauthor%20ss.png" />
-  </details>
-
-<hr>
-
-### HeadAuthor Part 2- Seed HeadAuthor user in database --------15982
-  
-<hr>
-
-### HeadAuthor Part 3- Restrict CRUD operations --------16017
-  
-<hr>
-
-### HeadAuthor Easy Login Button --------16018
-  
-<hr>
-
-### Link BlogAuthor and BlogPost --------16030
